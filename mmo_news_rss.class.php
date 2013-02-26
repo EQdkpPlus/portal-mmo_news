@@ -185,11 +185,11 @@ class mmo_news_rss extends gen_class {
 		$i = 0;
 		foreach($rss->channel->item as $item){
 			if ($i >= $count){return;}
-			$this->news[$i]['title']		= $item->title;
-			$this->news[$i]['link']			= $item->link;
-			$this->news[$i]['description']	= $item->description;
-			$this->news[$i]['author']		= $item->author;
-			$this->news[$i]['pubdate']		= $item->pubDate;
+			$this->news[$i]['title']		= sanitize($item->title);
+			$this->news[$i]['link']			= sanitize($item->link);
+			$this->news[$i]['description']	= sanitize($item->description);
+			$this->news[$i]['author']		= sanitize($item->author);
+			$this->news[$i]['pubdate']		= sanitize($item->pubDate);
 			$i++;
 		}
 	} # end function
@@ -258,12 +258,10 @@ class mmo_news_rss extends gen_class {
 	 * @return String
 	 */
 	private function createLink($title,$link,$disc,$author="",$date="",$crop_title=false){
-		$tt = stripslashes($disc);
-		$tt = str_replace('"', "'", $tt);
+		$tt = str_replace('"', "'", $disc);
 		$tt = str_replace(array("\n", "\r"), '', $tt);
-		$tt = addslashes($tt);
 
-		$header = "<b>".addslashes($title)."</b><br />";
+		$header = "<b>".$title."</b><br />";
 		$content = $this->wrapText($tt,$this->tooltipcrop) ;
 		$footer = "<br />".date('d.m.Y, H:i', strtotime($date))." by <b>".$author."</b>";
 
