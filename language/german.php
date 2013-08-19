@@ -26,5 +26,6 @@ $lang = array(
 	'mmo_news_desc'				=> 'Zeigt dir spannende Neuigkeiten rund um dein Spiel an',
 	'pm_mmo_news_count'			=> 'Anzahl der angezeigten News',
 	'pm_mmo_news_checkURL'		=> 'Überprüfe die Erreichbarkeit des Servers vor Abfragen der News',
+	'pm_mmo_news'				=> 'News',
 );
 ?>

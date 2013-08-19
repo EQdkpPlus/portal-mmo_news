@@ -22,7 +22,7 @@ if ( !defined('EQDKP_INC') ){
 
 class mmo_news_portal extends portal_generic {
 		public static function __shortcuts() {
-		$shortcuts = array();
+		$shortcuts = array('tpl');
 		return array_merge(parent::$shortcuts, $shortcuts);
 	}
 
@@ -41,11 +41,7 @@ class mmo_news_portal extends portal_generic {
 			'language'	=>	'pm_mmo_news_count',
 			'property'	=>	'text',
 			'size'		=>	'3',
-		),
-		'pm_mmo_news_checkURL'	=> array(
-			'name'		=>	'pm_mmo_news_checkURL',
-			'language'	=>	'pm_mmo_news_checkURL',
-			'property'	=>	'checkbox',
+			'default'	=> 5,
 		),
 	);
 	protected $install	= array(
@@ -55,12 +51,17 @@ class mmo_news_portal extends portal_generic {
 	);
 
 	public function output() {
+		$this->tpl->add_css(
+			'.mmo_news_portal .ui-accordion .ui-accordion-content {
+				padding: 4px;			
+			}'	
+		);
+		
 		include_once($this->root_path .'portal/mmo_news/mmo_news_rss.class.php');
-		$class = registry::register('mmo_news_rss', array($this->position, $this->id));
-		$output = $class->output_left;
+		$class = registry::register('mmo_news_rss', array($this->wide_content));
+		$output = $class->output;
 		$this->header = sanitize($class->header);
 		return $output;
 	}
 }
-if(version_compare(PHP_VERSION, '5.3.0', '<')) registry::add_const('short_mmo_news_portal', mmo_news_portal::__shortcuts());
 ?>

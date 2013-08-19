@@ -26,5 +26,6 @@ $lang = array(
 	'mmo_news_desc'				=> 'Shows News of ManaFlask',
 	'pm_mmo_news_count'			=> 'Amount of news to show',
 	'pm_mmo_news_checkURL'		=> 'Check availability of server first',
+	'pm_mmo_news'				=> 'News',
 );
 ?>

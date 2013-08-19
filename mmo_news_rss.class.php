@@ -29,7 +29,7 @@ class mmo_news_rss extends gen_class {
 	var $tooltipcrop		= 60;		// after that number of symbols the text in the tooltip wraps
 	var $titlecrop			= 30;		// after that number of symbols the text in the title wraps
 	var $checkURL_first		= true ;
-	var $middle				= false;
+	var $blnWideContent		= false;
 	var $moduleid			= 0;
 
 	//return vars
@@ -50,13 +50,12 @@ class mmo_news_rss extends gen_class {
 	 *
 	 * @return rss
 	 */
-	public function __construct($wherevalue, $moduleid){
-		if ($wherevalue == 'middle'){
-			$this->middle = true;
-		}
-		$this->moduleid = $moduleid;
+	public function __construct($blnWideContent){
+		//$this->blnWideContent = $blnWideContent;
+		$this->blnWideContent = false;
+		$this->header = ucfirst($this->config->get('default_game')).'-'.$this->user->lang('pm_mmo_news');
 		
-		$this->output_left = 'No feed for your game or language available.';
+		$this->output = 'No feed for your game or language available.';
 		
 		switch($this->config->get('game_language')){
 			case 'german': {
@@ -116,12 +115,10 @@ class mmo_news_rss extends gen_class {
 			}
 			break;
 		}
-		
 		if ($this->rssurl){
-			$this->checkURL_first = $this->config->get('pm_mmo_news_checkURL') ;
 			$this->parseXML($this->GetRSS($this->rssurl));
 			if ($this->news){
-				$this->createTPLvar($this->news);
+				$this->createOutput();
 			}
 		}
 	}
@@ -137,7 +134,7 @@ class mmo_news_rss extends gen_class {
 		$rss_string = $this->pdc->get('portal.mmo_news.rss');
 		if ($rss_string == null) {
 			//nothing cached or expired
-			$this->tpl->add_js('$.get("'.$this->root_path.'portal/mmo_news/update.php");');
+			$this->tpl->add_js('$.get("'.$this->server_path.'portal/mmo_news/update.php'.$this->SID.'");');
 			//Is there some expired data?
 			$expiredData = $this->pdc->get('portal.mmo_news.rss', false, false, true);
 			$rss_string = ($expiredData != null) ? $expiredData : "";
@@ -180,7 +177,7 @@ class mmo_news_rss extends gen_class {
 		$this->feed	= $rss->channel->generator;
 		$this->news = array();
 
-		$count = ($this->config->get('pm_mmo_news_count')) ? intval($this->config->get('pm_mmo_news_count')) : 10;
+		$count = ($this->config->get('pm_mmo_news_count')) ? intval($this->config->get('pm_mmo_news_count')) : 5;
 		
 		$i = 0;
 		foreach($rss->channel->item as $item){
@@ -193,60 +190,39 @@ class mmo_news_rss extends gen_class {
 			$i++;
 		}
 	} # end function
-
-	/**
-	 * createTPLvar
-	 * Createas the {NEWS_TICKER_H} and {NEWS_TICKER_V} Vars
-	 * wich could be displayed in the templates
-	 *
-	 * @param Array $news
-	 * @return NewstickerArray
-	 */
-	private function createTPLvar($news){
+	
+	public function createOutput(){
 		$updated_time = $this->time->user_date($this->updated, true, true);
-		$this->header = ucfirst($this->config->get('default_game')).'-News '.$updated_time ;
-
-		if (is_array($news)){
-			$newsticker_v_body = '';
-			foreach ($news as $key => $value){
-				// Generate an array fo an accordion
-				// array style: title => content
-				$newstick_array[(string)$value['title']] = $this->createBody(
-					$value['description'],
-					$value['link'],
-					$value['author'],
-					$value['pubdate']
-				);
-
-				$newsticker_v_body .= $this->createLink(
-					$value['title'],
-					$value['link'],
-					$value['description'],
-					$value['author'],
-					$value['pubdate'],
-					false
-				) . " | ";
-			}#  end foreach
-
-			$table_title = " ";
-
-			//ticker
-			$newsticker_H  = '<div style="margin-bottom:10px; white-space: normal !important;" class="portalbox_head"> <marquee scrolldelay="110" onMouseover="javascript: this.scrollAmount=\'0\' " onMouseout="javascript: this.scrollAmount=\'8\'" >'.$newsticker_v_body;
-			$newsticker_H .= '</marquee> </div>';
-
-			//Menunews
-			$newsticker_V = '<div style="white-space:normal;">'.$this->jquery->accordion('rrs_news',$newstick_array).'</div>';
-
-			//Set Template Variables
-			if ($this->middle){
-				$this->tpl->assign_vars(array('NEWS_TICKER_H'			=> $newsticker_H));
-				$this->tpl->add_js("$('#portalbox".$this->moduleid."').hide();", 'eop');
+		$this->header .= ' '.$updated_time;
+		
+		if (is_array($this->news)){
+			foreach ($this->news as $key => $value){
+				
+			
+				if($this->blnWideContent){
+				
+				} else {
+					// Generate an array fo an accordion
+					// array style: title => content
+					$newstick_array[(string)$value['title']] = $this->createBody(
+							$value['description'],
+							$value['link'],
+							$value['author'],
+							$value['pubdate']
+					);
+				
+				}
+			}#  end foreach	
+			
+			//Output
+			if($this->blnWideContent){
+				
 			} else {
-				$this->output_left = $newsticker_V;
+				$this->output = '<div style="white-space:normal;">'.$this->jquery->accordion('rrs_news',$newstick_array).'</div>';
 			}
+			
 		}
-		return $newsticker_V ;
-	} # end function
+	}
 
 	/**
 	 * createLink
@@ -332,5 +308,4 @@ class mmo_news_rss extends gen_class {
 		return $ret ;
 	}
 }
-if(version_compare(PHP_VERSION, '5.3.0', '<')) registry::add_const('short_mmo_news_rss', mmo_news_rss::$shortcuts);
 ?>
