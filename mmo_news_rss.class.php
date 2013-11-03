@@ -244,8 +244,7 @@ class mmo_news_rss extends gen_class {
 		if ($crop_title){
 			$title =	$this->cropText($title,$this->titlecrop) ;
 		}
-		$_link = "<a href='".$link."' target='_blank'>".$title."</a>" ;
-		$ret = " ".$this->html->ToolTip($header.$content.$footer,$_link);
+		$ret = "<a href='".$link."' target='_blank' class='coretip' data-coretip='".$header.$content.$footer."'>".$title."</a>";
 		return $ret ;
 	}
 
