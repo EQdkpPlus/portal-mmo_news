@@ -21,30 +21,25 @@ if ( !defined('EQDKP_INC') ){
 }
 
 class mmo_news_portal extends portal_generic {
-		public static function __shortcuts() {
-		$shortcuts = array('tpl');
-		return array_merge(parent::$shortcuts, $shortcuts);
-	}
 
-	protected $path		= 'mmo_news';
-	protected $data		= array(
+	protected static $path		= 'mmo_news';
+	protected static $data		= array(
 		'name'			=> 'MMO-News',
 		'version'		=> '0.1.1',
 		'author'		=> 'GodMod',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Shows a Module with News for your game',
+		'lang_prefix'	=> 'mmo_news_'
 	);
-	protected $positions = array('middle', 'left1', 'left2', 'right');
+	protected static $positions = array('middle', 'left1', 'left2', 'right');
 	protected $settings	= array(
-		'pm_mmo_news_count'	=> array(
-			'name'		=>	'pm_mmo_news_count',
-			'language'	=>	'pm_mmo_news_count',
-			'property'	=>	'text',
+		'count'	=> array(
+			'type'		=>	'text',
 			'size'		=>	'3',
 			'default'	=> 5,
 		),
 	);
-	protected $install	= array(
+	protected static $install	= array(
 		'autoenable'		=> '1',
 		'defaultposition'	=> 'left2',
 		'defaultnumber'		=> '5',
@@ -53,7 +48,7 @@ class mmo_news_portal extends portal_generic {
 	public function output() {
 		$this->tpl->add_css(
 			'.mmo_news_portal .ui-accordion .ui-accordion-content {
-				padding: 4px;			
+				padding: 4px;
 			}'	
 		);
 		

@@ -24,8 +24,7 @@ $lang = array(
 	'mmo_news'					=> 'MMO-News',
 	'mmo_news_name'				=> 'MMO-News',
 	'mmo_news_desc'				=> 'Shows News of ManaFlask',
-	'pm_mmo_news_count'			=> 'Amount of news to show',
-	'pm_mmo_news_checkURL'		=> 'Check availability of server first',
+	'mmo_news_f_count'			=> 'Amount of news to show',
 	'pm_mmo_news'				=> 'News',
 );
 ?>

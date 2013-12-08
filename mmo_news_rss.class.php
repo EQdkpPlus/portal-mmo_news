@@ -177,7 +177,7 @@ class mmo_news_rss extends gen_class {
 		$this->feed	= $rss->channel->generator;
 		$this->news = array();
 
-		$count = ($this->config->get('pm_mmo_news_count')) ? intval($this->config->get('pm_mmo_news_count')) : 5;
+		$count = ($this->config('count')) ? intval($this->config('count')) : 5;
 		
 		$i = 0;
 		foreach($rss->channel->item as $item){
