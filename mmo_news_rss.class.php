@@ -63,16 +63,16 @@ class mmo_news_rss extends gen_class {
 						switch (strtolower($this->config->get('default_game'))){
 							case 'wow': 				$rss_number = 1 ; break;
 							case 'daoc': 				$rss_number = 7 ; break;
-							case 'everquest': 			$rss_number = 10 ; break;
-							case 'everquest2': 			$rss_number = 10 ; break;
+							case 'eq': 					$rss_number = 10 ; break;
+							case 'eq2': 				$rss_number = 10 ; break;
 							case 'lotro': 				$rss_number = 4 ; break;
 							case 'tr': 					$rss_number = 19 ; break;
-							case 'vanguard-soh': 		$rss_number = 5 ; break;
+							case 'vanguard': 			$rss_number = 5 ; break;
 							case 'guildwars2': 			$rss_number = 52 ; break;
 							case 'aoc': 				$rss_number = 13 ; break;
 							case 'warhammer': 			$rss_number = 14 ; break;
 							case 'aion': 				$rss_number = 22 ; break;
-							case 'runesofmagic': 		$rss_number = 37 ; break;
+							case 'rom': 				$rss_number = 37 ; break;
 							case 'swtor': 				$rss_number = 43 ; break;
 							case 'diablo3': 			$rss_number = 39 ; break;
 							case 'rift': 				$rss_number = 58 ; break;
@@ -91,15 +91,15 @@ class mmo_news_rss extends gen_class {
 						switch (strtolower($this->config->get('default_game'))){
 							case 'wow': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=15' ; break;
 							case 'daoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=11' ; break;
-							case 'everquest': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
-							case 'everquest2': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=2' ; break;
+							case 'eq': 					$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
+							case 'eq2': 				$this->rssurl = 'https://forums.station.sony.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
 							case 'lotro': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=45' ; break;
-							case 'vanguard-soh': 		$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=147' ; break;
+							case 'vanguard': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=147' ; break;
 							case 'guildwars2': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=473' ; break;
 							case 'aoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=191' ; break;
 							case 'warhammer': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=239' ; break;
 							case 'aion': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=253' ; break;
-							case 'runesofmagic': 		$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=351' ; break;
+							case 'rom': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=351' ; break;
 							case 'swtor': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=367' ; break;
 							case 'diablo3': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=644' ; break;
 							case 'rift': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=431' ; break;
