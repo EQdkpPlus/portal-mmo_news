@@ -22,7 +22,7 @@ if ( !defined('EQDKP_INC') ){
 }
 
 class mmo_news_rss extends gen_class {
-	public static $shortcuts = array('core', 'user', 'time', 'jquery', 'html', 'tpl', 'config', 'puf'=>'urlfetcher', 'pdc');
+	public static $shortcuts = array('puf'=>'urlfetcher');
 
 	//Config
 	var $cachetime			= 10800;	// refresh time in seconds default 3 hours = 10800 seconds
