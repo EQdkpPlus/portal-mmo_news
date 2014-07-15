@@ -29,7 +29,8 @@ class mmo_news_portal extends portal_generic {
 		'author'		=> 'GodMod',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Shows a Module with News for your game',
-		'lang_prefix'	=> 'mmo_news_'
+		'lang_prefix'	=> 'mmo_news_',
+		'icon'			=> 'fa-book',
 	);
 	protected static $positions = array('middle', 'left1', 'left2', 'right');
 	protected $settings	= array(
