@@ -45,6 +45,8 @@ class mmo_news_portal extends portal_generic {
 		'defaultposition'	=> 'left2',
 		'defaultnumber'		=> '5',
 	);
+	
+	protected static $apiLevel = 20;
 
 	public function output() {
 		$this->tpl->add_css(
