@@ -76,6 +76,7 @@ class mmo_news_rss extends gen_class {
 							case 'diablo3': 			$rss_number = 39 ; break;
 							case 'rift': 				$rss_number = 58 ; break;
 							case 'tera': 				$rss_number = 55 ; break;
+							case 'eso':					$rss_number = 75 ; break;
 							
 							default: $rss_number = 1 ;
 								break;
@@ -104,6 +105,7 @@ class mmo_news_rss extends gen_class {
 							case 'rift': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=431' ; break;
 							case 'tera': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=477' ; break;
 							case 'tsw' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=404' ; break;
+							case 'eso' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=821' ; break;
 						}
 			}
 			break;
