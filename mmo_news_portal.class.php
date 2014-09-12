@@ -56,7 +56,7 @@ class mmo_news_portal extends portal_generic {
 		);
 		
 		include_once($this->root_path .'portal/mmo_news/mmo_news_rss.class.php');
-		$class = registry::register('mmo_news_rss', array($this->wide_content));
+		$class = registry::register('mmo_news_rss', array($this->wide_content, $this->config('count')));
 		$output = $class->output;
 		$this->header = sanitize($class->header);
 		return $output;

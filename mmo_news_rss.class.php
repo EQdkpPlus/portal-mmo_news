@@ -31,6 +31,7 @@ class mmo_news_rss extends gen_class {
 	var $checkURL_first		= true ;
 	var $blnWideContent		= false;
 	var $moduleid			= 0;
+	var $count				= 5;
 
 	//return vars
 	var $title 				= null;
@@ -50,7 +51,7 @@ class mmo_news_rss extends gen_class {
 	 *
 	 * @return rss
 	 */
-	public function __construct($blnWideContent){
+	public function __construct($blnWideContent, $intCount = 5){
 		//$this->blnWideContent = $blnWideContent;
 		$this->blnWideContent = false;
 		$this->header = ucfirst($this->config->get('default_game')).'-'.$this->user->lang('pm_mmo_news');
@@ -76,7 +77,7 @@ class mmo_news_rss extends gen_class {
 							case 'diablo3': 			$rss_number = 39 ; break;
 							case 'rift': 				$rss_number = 58 ; break;
 							case 'tera': 				$rss_number = 55 ; break;
-							case 'eso':					$rss_number = 75 ; break;
+							case 'teso':				$rss_number = 75 ; break;
 							
 							default: $rss_number = 1 ;
 								break;
@@ -105,7 +106,7 @@ class mmo_news_rss extends gen_class {
 							case 'rift': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=431' ; break;
 							case 'tera': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=477' ; break;
 							case 'tsw' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=404' ; break;
-							case 'eso' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=821' ; break;
+							case 'teso' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=821' ; break;
 						}
 			}
 			break;
@@ -179,7 +180,7 @@ class mmo_news_rss extends gen_class {
 		$this->feed	= $rss->channel->generator;
 		$this->news = array();
 
-		$count = ($this->config('count')) ? intval($this->config('count')) : 5;
+		$count = ($this->count) ? intval($this->count) : 5;
 		
 		$i = 0;
 		foreach($rss->channel->item as $item){
