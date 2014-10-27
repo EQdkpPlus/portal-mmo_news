@@ -58,6 +58,9 @@ class mmo_news_rss extends gen_class {
 		
 		$this->output = 'No feed for your game or language available.';
 		
+		d($this->config->get('game_language'));
+		d($this->config->get('default_game'));
+		
 		switch($this->config->get('game_language')){
 			case 'german': {
 						switch (strtolower($this->config->get('default_game'))){
@@ -84,7 +87,7 @@ class mmo_news_rss extends gen_class {
 						}
 						
 						$this->rssurl = 'http://rss.allvatar.com/news-'.$rss_number.'.xml';
-			
+						d($this->rssurl);
 			}
 			break;
 			
@@ -118,6 +121,7 @@ class mmo_news_rss extends gen_class {
 			}
 			break;
 		}
+
 		if ($this->rssurl){
 			$this->parseXML($this->GetRSS($this->rssurl));
 			if ($this->news){
