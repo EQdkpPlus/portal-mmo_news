@@ -1,6 +1,6 @@
 <?php
 /*	Project:	EQdkp-Plus
- *	Package:	MMO News Portal Module
+ *	Package:	EQdkp-Plus Language File
  *	Link:		http://eqdkp-plus.eu
  *
  *	Copyright (C) 2006-2015 EQdkp-Plus Developer Team
@@ -19,15 +19,23 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if ( !defined('EQDKP_INC') ){
-	header('HTTP/1.0 404 Not Found');exit;
+ 
+if (!defined('EQDKP_INC')) {
+	die('You cannot access this file directly.');
 }
 
-$lang = array(
-	'mmo_news'					=> 'MMO-News',
-	'mmo_news_name'				=> 'MMO-News',
-	'mmo_news_desc'				=> 'Shows News of ManaFlask',
-	'mmo_news_f_count'			=> 'Amount of news to show',
-	'pm_mmo_news'				=> 'News',
+//Language: English	
+//Created by EQdkp Plus Translation Tool on  2014-12-17 21:28
+//File: portal/mmo_news/language/english.php
+//Source-Language: german
+
+$lang = array( 
+	"mmo_news" => 'MMO-News',
+	"mmo_news_name" => 'MMO-News',
+	"mmo_news_desc" => 'Shows News of ManaFlask',
+	"mmo_news_f_count" => 'Amount of news to show',
+	"pm_mmo_news" => 'News',
+	
 );
+
 ?>
