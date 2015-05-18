@@ -249,7 +249,7 @@ class mmo_news_rss extends gen_class {
 		if ($crop_title){
 			$title =	$this->cropText($title,$this->titlecrop) ;
 		}
-		$ret = "<a href='".$link."' target='_blank' class='coretip' data-coretip='".$header.$content.$footer."'>".$title."</a>";
+		$ret = "<a href='".sanitize($link)."' target='_blank' class='coretip' data-coretip='".sanitize($header.$content.$footer)."'>".sanitize($title)."</a>";
 		return $ret ;
 	}
 
@@ -262,8 +262,8 @@ class mmo_news_rss extends gen_class {
 	 * @return String
 	 */
 	private function createBody($disc,$link,$author="",$date=""){
-		$content = '<a href="'.$link.'" target="_blank">'.$this->cropText($disc,280).'</a>';
-		$footer = $this->time->user_date(strtotime($date), true)." by <b>".$author."</b>";
+		$content = '<a href="'.sanitize($link).'" target="_blank">'.sanitize($this->cropText($disc,280)).'</a>';
+		$footer = $this->time->user_date(strtotime($date), true)." by <b>".sanitize($author)."</b>";
 		return $content.'<br />'.$footer;
 	}
 
