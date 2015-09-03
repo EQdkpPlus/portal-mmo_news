@@ -93,8 +93,8 @@ class mmo_news_rss extends gen_class {
 						switch (strtolower($this->config->get('default_game'))){
 							case 'wow': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=15' ; break;
 							case 'daoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=11' ; break;
-							case 'eq': 					$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
-							case 'eq2': 				$this->rssurl = 'https://forums.station.sony.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
+							case 'eq': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
+							case 'eq2': 				$this->rssurl = 'https://forums.daybreakgames.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
 							case 'lotro': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=45' ; break;
 							case 'vanguard': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=147' ; break;
 							case 'guildwars2': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=473' ; break;
