@@ -3,7 +3,7 @@
  *	Package:	MMO News Portal Module
  *	Link:		http://eqdkp-plus.eu
  *
- *	Copyright (C) 2006-2015 EQdkp-Plus Developer Team
+ *	Copyright (C) 2006-2016 EQdkp-Plus Developer Team
  *
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU Affero General Public License as published
@@ -54,8 +54,8 @@ class mmo_news_rss extends gen_class {
 	 * @return rss
 	 */
 	public function __construct($blnWideContent, $intCount = 5){
-		//$this->blnWideContent = $blnWideContent;
-		$this->blnWideContent = false;
+		$this->blnWideContent = $blnWideContent;
+
 		$this->header = ucfirst($this->config->get('default_game')).'-'.$this->user->lang('pm_mmo_news');
 		
 		$this->output = 'No feed for your game or language available.';
@@ -63,29 +63,24 @@ class mmo_news_rss extends gen_class {
 		switch($this->config->get('game_language')){
 			case 'german': {
 						switch (strtolower($this->config->get('default_game'))){
-							case 'wow': 				$rss_number = 1 ; break;
-							case 'daoc': 				$rss_number = 7 ; break;
-							case 'eq': 					$rss_number = 10 ; break;
-							case 'eq2': 				$rss_number = 10 ; break;
-							case 'lotro': 				$rss_number = 4 ; break;
-							case 'tr': 					$rss_number = 19 ; break;
-							case 'vanguard': 			$rss_number = 5 ; break;
-							case 'guildwars2': 			$rss_number = 52 ; break;
-							case 'aoc': 				$rss_number = 13 ; break;
-							case 'warhammer': 			$rss_number = 14 ; break;
-							case 'aion': 				$rss_number = 22 ; break;
-							case 'rom': 				$rss_number = 37 ; break;
-							case 'swtor': 				$rss_number = 43 ; break;
-							case 'diablo3': 			$rss_number = 39 ; break;
-							case 'rift': 				$rss_number = 58 ; break;
-							case 'tera': 				$rss_number = 55 ; break;
-							case 'teso':				$rss_number = 75 ; break;
-							
-							default: $rss_number = 1 ;
-								break;
+							case 'wow': 				$this->rssurl = 'http://blizzard.justnetwork.eu/category/wow/feed/'; break;
+							case 'daoc': 				$this->rssurl = 'http://shileah.de/category/news/feed/'; break;
+							case 'eq': 					$this->rssurl = 'http://rss.allvatar.com/news-10.xml'; break;
+							case 'eq2': 				$this->rssurl = 'https://www.everquest2.com/newsfeed/rss.vm'; break;
+							case 'lotro': 				$this->rssurl = 'https://reiter-von-rohan.com/?format=feed&type=rss'; break;
+							case 'tr': 					$this->rssurl = 'http://rss.allvatar.com/news-19.xml'; break;
+							case 'vanguard': 			$this->rssurl = 'http://rss.allvatar.com/news-5.xml'; break;
+							case 'guildwars2': 			$this->rssurl = 'https://guildnews.de/feed/'; break;
+							case 'aoc': 				$this->rssurl = 'http://rss.allvatar.com/news-13.xml'; break;
+							case 'aion': 				$this->rssurl = 'https://de.aion.gameforge.com/website/news.rss'; break;
+							case 'rom': 				$this->rssurl = 'http://rss.allvatar.com/news-37.xml'; break;
+							case 'swtor': 				$this->rssurl = 'http://swtorcantina.de/feed/'; break;
+							case 'diablo3': 			$this->rssurl = 'http://blizzard.justnetwork.eu/category/d3/feed/'; break;
+							case 'rift': 				$this->rssurl = 'http://www.trionworlds.com/rift/de/feed/'; break;
+							case 'tera': 				$this->rssurl = 'http://rss.allvatar.com/news-55.xml'; break;
+							case 'teso':				$this->rssurl = 'http://files.elderscrollsonline.com/rss/de/eso-rss.xml'; break;
 						}
 						
-						$this->rssurl = 'http://rss.allvatar.com/news-'.$rss_number.'.xml';
 			}
 			break;
 			
@@ -94,12 +89,11 @@ class mmo_news_rss extends gen_class {
 							case 'wow': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=15' ; break;
 							case 'daoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=11' ; break;
 							case 'eq': 					$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
-							case 'eq2': 				$this->rssurl = 'https://forums.station.sony.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
+							case 'eq2': 				$this->rssurl = 'https://forums.daybreakgames.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
 							case 'lotro': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=45' ; break;
 							case 'vanguard': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=147' ; break;
 							case 'guildwars2': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=473' ; break;
 							case 'aoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=191' ; break;
-							case 'warhammer': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=239' ; break;
 							case 'aion': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=253' ; break;
 							case 'rom': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=351' ; break;
 							case 'swtor': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=367' ; break;
@@ -175,6 +169,7 @@ class mmo_news_rss extends gen_class {
 		if (!$rss OR $rss == 'ERROR') return false;
 		$rss =  simplexml_load_string($rss);
 		if(!is_object($rss)) return false;
+		
 		$this->title = $rss->channel->title;
 		$this->link  = $rss->channel->link;
 		$this->description = $rss->channel->description;
@@ -263,7 +258,8 @@ class mmo_news_rss extends gen_class {
 	 */
 	private function createBody($disc,$link,$author="",$date=""){
 		$content = '<a href="'.sanitize($link).'" target="_blank">'.sanitize($this->cropText($disc,280)).'</a>';
-		$footer = $this->time->user_date(strtotime($date), true)." by <b>".sanitize($author)."</b>";
+		$footer = $this->time->user_date(strtotime($date), true);
+		if($author && $author != "") $footer .= " by <b>".sanitize($author)."</b>";
 		return $content.'<br />'.$footer;
 	}
 

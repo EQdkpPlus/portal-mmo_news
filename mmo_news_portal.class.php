@@ -3,7 +3,7 @@
  *	Package:	MMO News Portal Module
  *	Link:		http://eqdkp-plus.eu
  *
- *	Copyright (C) 2006-2015 EQdkp-Plus Developer Team
+ *	Copyright (C) 2006-2016 EQdkp-Plus Developer Team
  *
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU Affero General Public License as published
@@ -28,7 +28,7 @@ class mmo_news_portal extends portal_generic {
 	protected static $path		= 'mmo_news';
 	protected static $data		= array(
 		'name'			=> 'MMO-News',
-		'version'		=> '0.2.0',
+		'version'		=> '0.2.2',
 		'author'		=> 'GodMod',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Shows a Module with News for your game',
