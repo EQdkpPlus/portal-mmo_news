@@ -54,7 +54,7 @@ class mmo_news_rss extends gen_class {
 	 * @return rss
 	 */
 	public function __construct($blnWideContent, $intCount = 5){
-		$this->blnWideContent = $blnWideContent;
+		//$this->blnWideContent = $blnWideContent;
 		$this->header = ucfirst($this->config->get('default_game')).'-'.$this->user->lang('pm_mmo_news');
 		
 		$this->output = 'No feed for your game or language available.';
