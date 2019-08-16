@@ -58,61 +58,52 @@ class mmo_news_rss extends gen_class {
 		$this->header = ucfirst($this->config->get('default_game')).'-'.$this->user->lang('pm_mmo_news');
 		
 		$this->output = 'No feed for your game or language available.';
+		
+		$strLang = $this->user->lang_name;
 
-		switch($this->config->get('game_language')){
+		switch($strLang){
 			case 'german': {
 						switch (strtolower($this->config->get('default_game'))){
-							case 'wow': 				$this->rssurl = 'http://blizzard.justnetwork.eu/category/wow/feed/'; break;
+							case 'wow': 				$this->rssurl = 'https://blizzard.justnetwork.eu/category/wow/feed/'; break;
+							case 'wowclassic':			$this->rssurl = 'https://blizzard.justnetwork.eu/tag/classic-server/feed/'; break;			
 							case 'daoc': 				$this->rssurl = 'http://shileah.de/category/news/feed/'; break;
-							case 'eq': 					$this->rssurl = 'http://rss.allvatar.com/news-10.xml'; break;
+							case 'eq': 					$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9'; break;
 							case 'eq2': 				$this->rssurl = 'https://www.everquest2.com/newsfeed/rss.vm'; break;
 							case 'lotro': 				$this->rssurl = 'https://reiter-von-rohan.com/?format=feed&type=rss'; break;
-							case 'tr': 					$this->rssurl = 'http://rss.allvatar.com/news-19.xml'; break;
-							case 'vanguard': 			$this->rssurl = 'http://rss.allvatar.com/news-5.xml'; break;
 							case 'guildwars2': 			$this->rssurl = 'https://guildnews.de/feed/'; break;
-							case 'aoc': 				$this->rssurl = 'http://rss.allvatar.com/news-13.xml'; break;
 							case 'aion': 				$this->rssurl = 'https://de.aion.gameforge.com/website/news.rss'; break;
-							case 'rom': 				$this->rssurl = 'http://rss.allvatar.com/news-37.xml'; break;
 							case 'swtor': 				$this->rssurl = 'http://swtorcantina.de/feed/'; break;
 							case 'diablo3': 			$this->rssurl = 'http://blizzard.justnetwork.eu/category/d3/feed/'; break;
 							case 'rift': 				$this->rssurl = 'http://www.trionworlds.com/rift/de/feed/'; break;
-							case 'tera': 				$this->rssurl = 'http://rss.allvatar.com/news-55.xml'; break;
 							case 'teso':				$this->rssurl = 'http://files.elderscrollsonline.com/rss/de/eso-rss.xml'; break;
 						}
 			}
 			break;
-			
-			case 'english': {
-						switch (strtolower($this->config->get('default_game'))){
-							case 'wow': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=15' ; break;
-							case 'daoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=11' ; break;
-							case 'eq': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
-							case 'eq2': 				$this->rssurl = 'https://forums.daybreakgames.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
-							case 'lotro': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=45' ; break;
-							case 'vanguard': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=147' ; break;
-							case 'guildwars2': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=473' ; break;
-							case 'aoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=191' ; break;
-							case 'warhammer': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=239' ; break;
-							case 'aion': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=253' ; break;
-							case 'rom': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=351' ; break;
-							case 'swtor': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=367' ; break;
-							case 'diablo3': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=644' ; break;
-							case 'rift': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=431' ; break;
-							case 'tera': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=477' ; break;
-							case 'tsw' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=404' ; break;
-							case 'teso' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=821' ; break;
-						}
-			}
-			break;
-			
-			case 'spanish': {
-						switch (strtolower($this->config->get('default_game'))){
-							case 'wow': 				$this->rssurl = 'http://feeds.feedburner.com/guiaswowraideando' ; break;
-						}
+									
+			default: {
+				switch (strtolower($this->config->get('default_game'))){
+					case 'wow': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=15' ; break;
+					case 'wowclassic': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=15' ; break;
+					case 'daoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=11' ; break;
+					case 'eq': 					$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=9' ; break;
+					case 'eq2': 				$this->rssurl = 'https://forums.daybreakgames.com/eq2/index.php?forums/news-and-announcements.2/index.rss' ; break;
+					case 'lotro': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=45' ; break;
+					case 'vanguard': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=147' ; break;
+					case 'guildwars2': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=473' ; break;
+					case 'aoc': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=191' ; break;
+					case 'warhammer': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=239' ; break;
+					case 'aion': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=253' ; break;
+					case 'rom': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=351' ; break;
+					case 'swtor': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=367' ; break;
+					case 'diablo3': 			$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=644' ; break;
+					case 'rift': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=431' ; break;
+					case 'tera': 				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=477' ; break;
+					case 'tsw' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=404' ; break;
+					case 'teso' :				$this->rssurl = 'http://www.mmorpg.com/gameRss.cfm?gameId=821' ; break;
+				}
 			}
 			break;
 		}
-
 		if ($this->rssurl){
 			$this->parseXML($this->GetRSS($this->rssurl));
 			if ($this->news){
@@ -129,12 +120,12 @@ class mmo_news_rss extends gen_class {
 	 * @return XMLString
 	 */
 	private function GetRSS($url){
-		$rss_string = $this->pdc->get('portal.mmo_news.rss');
+		$rss_string = $this->pdc->get('portal.mmo_news.rss.'.md5($url));
 		if ($rss_string == null) {
 			//nothing cached or expired
 			$this->tpl->add_js('$.get("'.$this->server_path.'portal/mmo_news/update.php'.$this->SID.'");');
 			//Is there some expired data?
-			$expiredData = $this->pdc->get('portal.mmo_news.rss', false, false, true);
+			$expiredData = $this->pdc->get('portal.mmo_news.rss.'.md5($url), false, false, true);
 			$rss_string = ($expiredData != null) ? $expiredData : "";
 		}
 
@@ -146,9 +137,9 @@ class mmo_news_rss extends gen_class {
 		$rss_string = $this->puf->fetch($this->rssurl);
 		$rss_string = is_utf8($rss_string) ? $rss_string : utf8_encode($rss_string);
 		if ($rss_string && strlen($rss_string)>1){
-			$this->pdc->put('portal.mmo_news.rss', @base64_encode($rss_string), $this->cachetime);
+			$this->pdc->put('portal.mmo_news.rss.'.md5($this->rssurl), @base64_encode($rss_string), $this->cachetime);
 		} else {
-			$this->pdc->put('portal.mmo_news.rss', "", $this->cachetime);
+			$this->pdc->put('portal.mmo_news.rss.'.md5($this->rssurl), "", $this->cachetime);
 		}
 	}
 

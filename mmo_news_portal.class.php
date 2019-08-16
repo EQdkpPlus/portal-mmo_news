@@ -28,7 +28,7 @@ class mmo_news_portal extends portal_generic {
 	protected static $path		= 'mmo_news';
 	protected static $data		= array(
 		'name'			=> 'MMO-News',
-		'version'		=> '0.3.0',
+		'version'		=> '0.3.1',
 		'author'		=> 'GodMod',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Shows a Module with News for your game',
